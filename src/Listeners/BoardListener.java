@@ -151,7 +151,9 @@ public class BoardListener extends MouseAdapter
                     boardLogic.engineTurn = false ;
                     boardLogic.engineMove();
                     board.repaint();
-                    SwingUtilities.invokeLater(()-> boardLogic.list.addMove(boardLogic.lastMove.toText(),boardLogic.lastMove.piece.isWhite));
+                    if (boardLogic.listMove)
+                        SwingUtilities.invokeLater(()-> boardLogic.list.addMove(boardLogic.lastMove.toText(),boardLogic.lastMove.piece.isWhite));
+                    boardLogic.listMove = false ;
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
